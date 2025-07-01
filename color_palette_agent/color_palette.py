@@ -10,17 +10,7 @@ import requests
 import requests
 import os
 
-ASI_API_KEY = os.getenv("ASI_API_KEY")
-if not ASI_API_KEY:
-    raise ValueError("You need the ASI_API_KEY env var")
-
-BASE_URL = "https://api.asi1.ai/v1"
-HEADERS = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Authorization": f"Bearer {ASI_API_KEY}"
-}
-
+client = OpenAI()
 
 def get_color_palette_from_content(prompt_content: List[Dict[str, str | bytes]]) -> list[dict]:
     """
@@ -60,18 +50,12 @@ def get_color_palette_from_content(prompt_content: List[Dict[str, str | bytes]])
         "role": "user",
         "content": user_parts
     })
-    resp = requests.post(
-        f"{BASE_URL}/chat/completions",
-        headers=HEADERS,
-        json={
-            "model": "asi1-mini",
-            "messages": messages,
-            "temperature": 0.2,
-        }
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=messages,
     )
-    resp.raise_for_status()
-    data = resp.json()
-    raw = data["choices"][0]["message"]["content"]
+
+    raw = response.choices[0].message.content.strip()
 
     try:
         if raw.startswith("```json"):
