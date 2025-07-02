@@ -2,7 +2,7 @@
 *.json
 
 # ignore all .envs
-*.env
+.env
 
 # ignore pycache directories
-*__pycache__/
+__pycache__/
