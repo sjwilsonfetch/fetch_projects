@@ -1,0 +1,5 @@
+# ignore chat history and all other json files
+*.json
+
+# ignore all .envs
+*.env
