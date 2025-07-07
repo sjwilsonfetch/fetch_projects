@@ -2,7 +2,7 @@ import os
 import shutil
 from pathlib import Path
 
-from langchain_community.document_loaders import UnstructuredFileLoader, TextLoader
+from langchain_community.document_loaders import PyPDFLoader, TextLoader
 from langchain_community.embeddings import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -25,7 +25,7 @@ def build_faiss_index(output_dir: str = "a2rchi_index"):
         for file in os.listdir(path):
             fpath = path / file
             if file.endswith(".pdf"):
-                loader = UnstructuredFileLoader(str(fpath))
+                loader = PyPDFLoader(str(fpath))
             elif file.endswith(".txt"):
                 loader = TextLoader(str(fpath))
             else:
