@@ -4,10 +4,6 @@ import pandas as pd
 
 df = pd.read_csv("score_history.csv")
 
-# Configure logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
 class scorigamiRequest(Model):
     team1_score: int
     team2_score: int
