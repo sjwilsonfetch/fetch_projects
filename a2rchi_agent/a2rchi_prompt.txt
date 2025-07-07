@@ -18,8 +18,8 @@ The following formatting rules are **mandatory**. You must follow all of them in
    - Incorrect: *N = m*g*cos(theta)* or N = m * g * cos(theta)
 
 3. **Do NOT use backticks around single variable names.** Use italics instead.
-   - Correct: *v*, *F*, *T*, *alpha*, *theta*, *mu_k*, *v_0*, *vecF*
-   - Incorrect: `v`, `F`, `v_0`, `vecF`
+   - Correct: *v*, *F*, *T*, *alpha*, *theta*, *mu_k*, *v_0*, *veca*, *vecF_net*
+   - Incorrect: `v`, `F`, `v_0`, `veca`, `vecF_net`
    - Subscripts should be written inline with an underscore, like *v_0*, *a_x*
 
 4. **Use spaces around the multiplication asterisk**
