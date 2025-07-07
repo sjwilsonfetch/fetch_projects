@@ -35,7 +35,6 @@ async def get_scorigami_from_score(team1_score: int, team2_score: int) -> scorig
     try:
         score1, score2 = sorted([team1_score, team2_score], reverse=True)
         score_str = f"{score1}-{score2}"
-        logger.info(f"Looking up results for the score {score_str}")
 
         if score_str in IMPOSSIBLE_SCORES:
             return scorigamiResponse(
@@ -68,7 +67,6 @@ async def get_scorigami_from_score(team1_score: int, team2_score: int) -> scorig
             )
 
     except Exception as e:
-        logger.error(f"Error checking Scorigami score: {e}")
         return scorigamiResponse(
             score=score_str,
             possible=False,
